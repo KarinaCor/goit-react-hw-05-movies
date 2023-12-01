@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { InputSearch, ButtonSearch } from './Form.module';
+import * as SC from '../Form/Form.styled'
 
 const Form = ({ setSearchParams }) => {
   const [query, setQuery] = useState('');
@@ -16,16 +16,16 @@ const Form = ({ setSearchParams }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputSearch
+      <SC.InputSearch
         type="text"
         placeholder="Name movie"
         autoFocus
         value={query}
         onChange={handleSearchParams}
       />
-      <ButtonSearch type="submit" disabled={!query}>
+      <SC.ButtonSearch type="submit" disabled={!query}>
         Search
-      </ButtonSearch>
+      </SC.ButtonSearch>
     </form>
   );
 };

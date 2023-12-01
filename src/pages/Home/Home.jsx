@@ -1,4 +1,7 @@
+import FilmsList from 'components/FilmList/FilmList';
 import { useEffect, useState } from 'react';
+import { getTrendingMovies } from 'services/getMovie';
+import * as SC from '../Home/Home.styled'
 
 const Home = () => {
     const [movies, setMovies] = useState([])
@@ -9,7 +12,7 @@ const Home = () => {
     
       return (
         <>
-          <h1>Trending today</h1>
+          <SC.Title>Trending today</SC.Title>
           <FilmsList movies={movies} />
         </>
       );

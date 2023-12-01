@@ -1,6 +1,9 @@
-import { getCastMovie } from 'components/services/getMovie';
+import { getCastMovie } from 'services/getMovie';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import * as SC from '../Cast/Cast.styled'
+import { BASE_POSTER_URL, PLACEHOLDER } from 'utils/constans';
+
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -16,7 +19,7 @@ const Cast = () => {
             console.log(e);
         }
     }
-    fetchCast
+    fetchCast()
 },[movieId])
 
 return (

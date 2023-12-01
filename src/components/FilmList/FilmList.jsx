@@ -1,18 +1,19 @@
 import { useLocation, Link } from 'react-router-dom';
-import { ListFilms, ItemFilms } from './FilmsList.module';
+
+import * as SC from '../FilmList/FilmList.styled'
 
 const FilmsList = ({ movies }) => {
   const location = useLocation();
   return (
-    <ListFilms>
+    <SC.List>
       {movies.map(({ id, original_title }) => (
-        <ItemFilms key={id}>
+        <SC.Item key={id}>
           <Link state={{ from: location }} to={`/movies/${id}`}>
             {original_title}
           </Link>
-        </ItemFilms>
+        </SC.Item>
       ))}
-    </ListFilms>
+    </SC.List>
   );
 };
 

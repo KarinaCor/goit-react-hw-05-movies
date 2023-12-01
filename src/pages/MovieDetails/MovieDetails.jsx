@@ -1,3 +1,4 @@
+import * as SC from '../MovieDetails/MovieDetails.styled'
 import { Suspense, useEffect, useState } from 'react';
 import {
   Link,
@@ -6,12 +7,13 @@ import {
   useLocation,
   useParams,
 } from 'react-router-dom';
-import { getMovieById } from 'services/getMovies';
-import { BASE_POSTER_URL, PLACEHOLDER } from 'utils/constants';
+import { getMovieById } from 'services/getMovie';
+
+import { BASE_POSTER_URL, PLACEHOLDER } from '../../utils/constans';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const { movie, setMovie } = useState();
+  const { movie, setMovie } = useState('');
   const location = useLocation();
 
   const backLinkHref = location.state?.from ?? '/movies';
@@ -25,18 +27,18 @@ const MovieDetails = () => {
         console.log(e);
       }
     };
-    fetchMovieById;
+    fetchMovieById()
   }, [movieId]);
 
   return (
     <>
-      <GoBackLink>
+      <SC.GoBackLink>
         <Link to={backLinkHref}>
           Go back<span>.</span>
         </Link>
-      </GoBackLink>
-      <FilmWrapper>
-        <FilmImg
+      </SC.GoBackLink>
+      <SC.FilmWrapper>
+        <SC.FilmImg
           src={`${
             movie.poster_path
               ? BASE_POSTER_URL + movie.poster_path
@@ -45,32 +47,32 @@ const MovieDetails = () => {
           alt="get"
         />
         <div>
-          <FilmTitle>{movie.original_title}</FilmTitle>
-          <FilmSubTitle>Rating: {Math.round(movie.vote_average)}</FilmSubTitle>
-          <FilmSubTitle>Overview</FilmSubTitle>
-          <FilmDescr>{movie.overview}</FilmDescr>
-          <FilmSubTitle>Genres</FilmSubTitle>
-          <StyledListDescr>
+          <SC.FilmTitle>{movie.original_title}</SC.FilmTitle>
+          <SC.FilmSubTitle>Rating: {Math.round(movie.vote_average)}</SC.FilmSubTitle>
+          <SC.FilmSubTitle>Overview</SC.FilmSubTitle>
+          <SC.FilmDescr>{movie.overview}</SC.FilmDescr>
+          <SC.FilmSubTitle>Genres</SC.FilmSubTitle>
+          <SC.StyledListDescr>
             {movie.genres?.map(genre => (
               <li key={genre.id}>{genre.name}</li>
             ))}
-          </StyledListDescr>
+          </SC.StyledListDescr>
         </div>
-      </FilmWrapper>
+      </SC.FilmWrapper>
       <div>
         <h2>Additional information</h2>
-        <StyledList>
-          <ListItem>
+        <SC.StyledList>
+          <SC.ListItem>
             <NavLink to="cast" state={location.state}>
               Cast<span>.</span>
             </NavLink>
-          </ListItem>
-          <ListItem>
+          </SC.ListItem>
+          <SC.ListItem>
             <NavLink to="reviews" state={location.state}>
               Reviews<span>.</span>
             </NavLink>
-          </ListItem>
-        </StyledList>
+          </SC.ListItem>
+        </SC.StyledList>
         <Suspense fallback={<div>Loading subpage...</div>}>
           <Outlet />
         </Suspense>

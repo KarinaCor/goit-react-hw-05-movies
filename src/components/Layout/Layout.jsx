@@ -1,30 +1,31 @@
 import { Suspense } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { Container, NavItem, NavList, Navigation } from './SharedLayout.module';
+import * as SC from '../Layout/Layout.styled'
+
 
 const Layout = () => {
   return (
-    <Container>
+    <SC.Container>
       <header>
-        <Navigation>
-          <NavList>
-            <NavItem>
+        <SC.Navigation>
+          <SC.NavList>
+            <SC.NavItem>
               <Link to="/">
-                Home<span>.</span>
+                Home<SC.Span>.</SC.Span>
               </Link>
-            </NavItem>
-            <NavItem>
+            </SC.NavItem>
+            <SC.NavItem>
               <Link to="/movies">
-                Movies<span>.</span>
+                Movies<SC.Span>.</SC.Span>
               </Link>
-            </NavItem>
-          </NavList>
-        </Navigation>
+            </SC.NavItem>
+          </SC.NavList>
+        </SC.Navigation>
       </header>
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
       </Suspense>
-    </Container>
+    </SC.Container>
   );
 };
 
