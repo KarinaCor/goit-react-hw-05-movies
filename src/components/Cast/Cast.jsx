@@ -22,8 +22,9 @@ const Cast = () => {
     fetchCast()
 },[movieId])
 
-return (
-    <SC.List>
+return (<>
+{
+<SC.List>
       {cast.map(({ id, profile_path, original_name, character }) => (
         <SC.Item key={id}>
           <img
@@ -43,6 +44,9 @@ return (
         </SC.Item>
       ))}
     </SC.List>
+}
+</>
+    
 )
 };
 

@@ -20,7 +20,7 @@ const Reviews = () => {
     fetchReviews()
   }, [movieId]);
 
-  return reviews.length > 0 ? (
+  return reviews.length === 0 ? (
       <h3>No Reviews</h3>
     ) : (
     
@@ -35,4 +35,4 @@ const Reviews = () => {
   );
 };
 
-export default Reviews
+export default Reviews;

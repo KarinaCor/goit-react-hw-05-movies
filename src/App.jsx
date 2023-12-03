@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 
 const Home = lazy(() => import('../src/pages/Home/Home'));
-const MoviesDetails = lazy(() =>
+const MovieDetails = lazy(() =>
   import('../src/pages/MovieDetails/MovieDetails')
 );
 const Movies = lazy(() => import('../src/pages/Movies/Movies'));
@@ -17,7 +17,7 @@ export const App = () => {
       <Route path="/" element={<Layout/>}>
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
-        <Route path="movies/:movieId" element={<MoviesDetails />}>
+        <Route path="movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>

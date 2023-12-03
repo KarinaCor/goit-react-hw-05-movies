@@ -8,10 +8,10 @@ import FilmsList from 'components/FilmList/FilmList';
 
 const Movies = () => {
     const [movies, setMovies] = useState([])
-    const [seachParams, setSeachParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect (() => {
-        const currentQuery = seachParams.get('query')
+        const currentQuery = searchParams.get('query')
         if (!currentQuery) return
 
         const fetchMovieByQuery = async () => {
@@ -24,11 +24,11 @@ const Movies = () => {
             }
         }
         fetchMovieByQuery()
-    },[seachParams])
+    },[searchParams])
 
     return (
         <>
-          <Form setSearchParams={setSeachParams} />
+          <Form setSearchParams={setSearchParams} />
           {movies.length > 0 && <FilmsList movies={movies} />}
         </>
       );
