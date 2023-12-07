@@ -27,7 +27,7 @@ return (<>
 <SC.List>
       {cast.map(({ id, profile_path, original_name, character }) => (
         <SC.Item key={id}>
-          <img
+          <SC.Img
                 src={`${
                   profile_path
                     ? BASE_POSTER_URL + profile_path

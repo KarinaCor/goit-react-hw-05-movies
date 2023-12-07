@@ -13,11 +13,10 @@ import { BASE_POSTER_URL, PLACEHOLDER } from '../../utils/constans';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const { movie, setMovie } = useState('');
+  const [movie, setMovie] = useState('');
   const location = useLocation();
 
   const backLinkHref = location.state?.from ?? '/movies';
-
   useEffect(() => {
     const fetchMovieById = async () => {
       try {
@@ -27,8 +26,8 @@ const MovieDetails = () => {
         console.log(e);
       }
     };
-    fetchMovieById()
-  }, [setMovie]);
+    fetchMovieById();
+  }, [movieId]);
 
   return (
     <>
@@ -64,12 +63,13 @@ const MovieDetails = () => {
         <SC.StyledList>
           <SC.ListItem>
             <NavLink to="cast" state={location.state}>
-              Cast<span>.</span>
+              <SC.Span>Cast</SC.Span>
             </NavLink>
           </SC.ListItem>
           <SC.ListItem>
             <NavLink to="reviews" state={location.state}>
-              Reviews<span>.</span>
+            <SC.Span>Reviews</SC.Span>
+              
             </NavLink>
           </SC.ListItem>
         </SC.StyledList>
